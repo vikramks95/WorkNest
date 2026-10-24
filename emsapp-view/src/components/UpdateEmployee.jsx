@@ -149,13 +149,13 @@ const UpdateEmployee = () => {
                   {/* Role-based Banner */}
                   {!canManageEmployees && isEmployee && !isSelf && (
                     <div className="alert alert-warning py-2 mb-3">
-                      ⚠️ <strong>Access Restricted:</strong> As an employee, you can only view and update your own personal profile.
+                       <strong>Access Restricted:</strong> As an employee, you can only view and update your own personal profile.
                     </div>
                   )}
 
                   {!canManageEmployees && isEmployee && isSelf && (
                     <div className="alert alert-info py-2 mb-3 d-flex align-items-center gap-2">
-                      <span className="fs-5">ℹ️</span>
+                      <span className="fs-5"></span>
                       <div className="small">
                         <strong>Self-Service Mode:</strong> You can edit your personal details (Name, Phone, Email, and Profile Photo). Organizational settings (Department, Job Title, Status, and Salary) are locked and managed by HR/Admin.
                       </div>
@@ -295,7 +295,7 @@ const UpdateEmployee = () => {
                   <div className="row g-3 mb-3">
                     <div className="col-12 col-sm-6">
                       <label htmlFor="department" className="form-label fw-semibold">
-                        Department {!canManageEmployees && <span className="badge bg-secondary-subtle text-secondary ms-1">🔒 Locked</span>}
+                        Department {!canManageEmployees && <span className="badge bg-secondary-subtle text-secondary ms-1">Locked</span>}
                       </label>
                       <select
                         id="department"
@@ -315,7 +315,7 @@ const UpdateEmployee = () => {
 
                     <div className="col-12 col-sm-6">
                       <label htmlFor="role" className="form-label fw-semibold">
-                        Job Title / Position {!canManageEmployees && <span className="badge bg-secondary-subtle text-secondary ms-1">🔒 Locked</span>}
+                        Job Title / Position {!canManageEmployees && <span className="badge bg-secondary-subtle text-secondary ms-1">Locked</span>}
                       </label>
                       <input
                         id="role"

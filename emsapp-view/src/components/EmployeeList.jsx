@@ -183,14 +183,14 @@ const EmployeeList = () => {
             </div>
             <div className="d-flex align-items-center gap-2">
               <Link to="/dashboard" className="btn btn-outline-secondary btn-sm px-3">
-                📊 Dashboard
+                 Dashboard
               </Link>
               {canManageEmployees && (
                 <button
                   className="btn btn-primary btn-sm px-3 shadow-sm"
                   onClick={() => navigate('/addEmployee')}
                 >
-                  + Add Employee
+                   Add Employee
                 </button>
               )}
             </div>
@@ -222,7 +222,7 @@ const EmployeeList = () => {
                     }}
                     title="Clear search"
                   >
-                    ✕
+                    
                   </button>
                 )}
               </div>
@@ -458,7 +458,7 @@ const EmployeeList = () => {
                             onClick={() => setViewingEmployee(employee)}
                             title="View Employee Profile"
                           >
-                            👁️ View
+                             View
                           </button>
                           {canManageEmployees && (
                             <>
@@ -467,14 +467,14 @@ const EmployeeList = () => {
                                 onClick={() => navigate(`/editEmployee/${employee.id}`)}
                                 title="Edit Employee"
                               >
-                                ✏️ Edit
+                                 Edit
                               </button>
                               <button
                                 className="btn btn-outline-danger"
                                 onClick={(e) => deleteEmployee(e, employee.id)}
                                 title="Delete Employee"
                               >
-                                🗑️
+                                
                               </button>
                             </>
                           )}
@@ -487,7 +487,7 @@ const EmployeeList = () => {
                               onClick={() => navigate(`/editEmployee/${employee.id}`)}
                               title="Edit My Details"
                             >
-                              ✏️ Edit My Info
+                             Edit My Info
                             </button>
                           )}
                         </div>

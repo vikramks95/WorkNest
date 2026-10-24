@@ -93,41 +93,43 @@ const Signup = () => {
   return (
     <AuthLayout
       title="Create your account"
-      subtitle="Join thousands of organizations already using WorkFlow Suite to manage their workforce."
+      subtitle="Join thousands of organizations already using WorkNest to manage their workforce."
       mode="signup"
     >
       {/* Error alert */}
       {errorMessage && (
-        <div className="auth-alert auth-alert--error">
-          <div className="auth-alert-icon">!</div>
+        <div className="flex items-center gap-2 p-3 mb-5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs sm:text-sm font-medium">
+          <div className="w-5 h-5 rounded-full bg-rose-600 text-white flex items-center justify-center font-bold text-xs shrink-0">
+            !
+          </div>
           <div>{errorMessage}</div>
         </div>
       )}
 
       {/* Success alert */}
       {successMessage && (
-        <div className="auth-alert auth-alert--success">
-          <div className="auth-alert-icon">✓</div>
+        <div className="flex items-center gap-2 p-3 mb-5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs sm:text-sm font-medium">
+          <div className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shrink-0">
+            ✓
+          </div>
           <div>{successMessage}</div>
         </div>
       )}
 
       {/* Signup form */}
-      <form onSubmit={handleSubmit} noValidate>
+      <form onSubmit={handleSubmit} noValidate className="space-y-4">
         {/* Full Name */}
-        <div className="auth-field">
-          <div className="auth-field-label">
-            <label htmlFor="signup-name">
-              Full Name<span className="required-dot">*</span>
-            </label>
-          </div>
-          <div className="auth-input-wrapper">
-            <span className="auth-input-icon">✏️</span>
+        <div>
+          <label htmlFor="signup-name" className="block text-xs font-semibold text-slate-700 mb-1.5">
+            Full Name <span className="text-rose-500">*</span>
+          </label>
+          <div className="relative flex items-center">
+            <span className="absolute left-3 text-slate-400 pointer-events-none text-sm">✏️</span>
             <input
               id="signup-name"
               name="name"
               type="text"
-              className="auth-input"
+              className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 outline-none text-sm text-slate-900 transition-all placeholder:text-slate-400 bg-slate-50/50 focus:bg-white"
               placeholder="e.g. Jane Doe"
               value={formData.name}
               onChange={handleChange}
@@ -138,20 +140,18 @@ const Signup = () => {
         </div>
 
         {/* Username + Email side by side */}
-        <div className="auth-field-row">
-          <div className="auth-field">
-            <div className="auth-field-label">
-              <label htmlFor="signup-username">
-                Username<span className="required-dot">*</span>
-              </label>
-            </div>
-            <div className="auth-input-wrapper">
-              <span className="auth-input-icon">👤</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label htmlFor="signup-username" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Username <span className="text-rose-500">*</span>
+            </label>
+            <div className="relative flex items-center">
+              <span className="absolute left-3 text-slate-400 pointer-events-none text-sm">👤</span>
               <input
                 id="signup-username"
                 name="username"
                 type="text"
-                className="auth-input"
+                className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 outline-none text-sm text-slate-900 transition-all placeholder:text-slate-400 bg-slate-50/50 focus:bg-white"
                 placeholder="e.g. janedoe"
                 value={formData.username}
                 onChange={handleChange}
@@ -160,19 +160,17 @@ const Signup = () => {
             </div>
           </div>
 
-          <div className="auth-field">
-            <div className="auth-field-label">
-              <label htmlFor="signup-email">
-                Email<span className="required-dot">*</span>
-              </label>
-            </div>
-            <div className="auth-input-wrapper">
-              <span className="auth-input-icon">📧</span>
+          <div>
+            <label htmlFor="signup-email" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Email <span className="text-rose-500">*</span>
+            </label>
+            <div className="relative flex items-center">
+              <span className="absolute left-3 text-slate-400 pointer-events-none text-sm">📧</span>
               <input
                 id="signup-email"
                 name="email"
                 type="email"
-                className="auth-input"
+                className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 outline-none text-sm text-slate-900 transition-all placeholder:text-slate-400 bg-slate-50/50 focus:bg-white"
                 placeholder="jane@company.com"
                 value={formData.email}
                 onChange={handleChange}
@@ -183,86 +181,71 @@ const Signup = () => {
         </div>
 
         {/* Role Selector — visual radio cards */}
-        <div className="auth-field">
-          <div className="auth-field-label">
-            <label>
-              Select Your Role<span className="required-dot">*</span>
-            </label>
-          </div>
-          <div className="auth-role-selector">
-            <div className="auth-role-option">
-              <input
-                type="radio"
-                id="role-employee"
-                name="role"
-                value="ROLE_EMPLOYEE"
-                checked={formData.role === 'ROLE_EMPLOYEE'}
-                onChange={handleChange}
-              />
-              <label htmlFor="role-employee">
-                <span className="auth-role-emoji">👤</span>
-                <span className="auth-role-name">Employee</span>
-                <span className="auth-role-desc">Self-Service & Leave</span>
-              </label>
-            </div>
-            <div className="auth-role-option">
-              <input
-                type="radio"
-                id="role-hr"
-                name="role"
-                value="ROLE_HR"
-                checked={formData.role === 'ROLE_HR'}
-                onChange={handleChange}
-              />
-              <label htmlFor="role-hr">
-                <span className="auth-role-emoji">👔</span>
-                <span className="auth-role-name">HR Manager</span>
-                <span className="auth-role-desc">Records & Leaves</span>
-              </label>
-            </div>
-            <div className="auth-role-option">
-              <input
-                type="radio"
-                id="role-admin"
-                name="role"
-                value="ROLE_ADMIN"
-                checked={formData.role === 'ROLE_ADMIN'}
-                onChange={handleChange}
-              />
-              <label htmlFor="role-admin">
-                <span className="auth-role-emoji">🛡️</span>
-                <span className="auth-role-name">Admin</span>
-                <span className="auth-role-desc">Full Control</span>
-              </label>
-            </div>
+        <div>
+          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+            Select Your Role <span className="text-rose-500">*</span>
+          </label>
+          <div className="grid grid-cols-3 gap-2">
+            {[
+              { id: 'role-employee', value: 'ROLE_EMPLOYEE', emoji: '👤', name: 'Employee', desc: 'Self Service' },
+              { id: 'role-hr', value: 'ROLE_HR', emoji: '👔', name: 'HR Manager', desc: 'Leaves & Team' },
+              { id: 'role-admin', value: 'ROLE_ADMIN', emoji: '🛡️', name: 'Admin', desc: 'Full Access' },
+            ].map((roleOption) => {
+              const isSelected = formData.role === roleOption.value;
+              return (
+                <label
+                  key={roleOption.id}
+                  htmlFor={roleOption.id}
+                  className={`p-2.5 rounded-xl border text-center cursor-pointer transition-all flex flex-col items-center justify-center ${
+                    isSelected
+                      ? 'border-indigo-600 bg-indigo-50/60 shadow-sm'
+                      : 'border-slate-200 hover:border-slate-300 bg-slate-50/40'
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    id={roleOption.id}
+                    name="role"
+                    value={roleOption.value}
+                    checked={isSelected}
+                    onChange={handleChange}
+                    className="sr-only"
+                  />
+                  <span className="text-lg mb-0.5">{roleOption.emoji}</span>
+                  <span className={`text-xs font-bold leading-tight ${isSelected ? 'text-indigo-700' : 'text-slate-800'}`}>
+                    {roleOption.name}
+                  </span>
+                  <span className="text-[10px] text-slate-500 leading-tight mt-0.5">
+                    {roleOption.desc}
+                  </span>
+                </label>
+              );
+            })}
           </div>
         </div>
 
         {/* Password + Confirm Password side by side */}
-        <div className="auth-field-row">
-          <div className="auth-field">
-            <div className="auth-field-label">
-              <label htmlFor="signup-password">
-                Password<span className="required-dot">*</span>
-              </label>
-            </div>
-            <div className="auth-input-wrapper">
-              <span className="auth-input-icon">🔒</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label htmlFor="signup-password" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Password <span className="text-rose-500">*</span>
+            </label>
+            <div className="relative flex items-center">
+              <span className="absolute left-3 text-slate-400 pointer-events-none text-sm">🔒</span>
               <input
                 id="signup-password"
                 name="password"
                 type={showPassword ? 'text' : 'password'}
-                className="auth-input"
-                placeholder="At least 6 characters"
+                className="w-full pl-9 pr-9 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 outline-none text-sm text-slate-900 transition-all placeholder:text-slate-400 bg-slate-50/50 focus:bg-white"
+                placeholder="≥ 6 chars"
                 value={formData.password}
                 onChange={handleChange}
                 required
                 autoComplete="new-password"
-                style={{ paddingRight: '3rem' }}
               />
               <button
                 type="button"
-                className="auth-pw-toggle"
+                className="absolute right-2.5 text-slate-400 hover:text-slate-600 cursor-pointer bg-transparent border-0 text-sm"
                 onClick={() => setShowPassword(!showPassword)}
                 tabIndex={-1}
               >
@@ -271,19 +254,17 @@ const Signup = () => {
             </div>
           </div>
 
-          <div className="auth-field">
-            <div className="auth-field-label">
-              <label htmlFor="signup-confirm-password">
-                Confirm<span className="required-dot">*</span>
-              </label>
-            </div>
-            <div className="auth-input-wrapper">
-              <span className="auth-input-icon">🔒</span>
+          <div>
+            <label htmlFor="signup-confirm-password" className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Confirm <span className="text-rose-500">*</span>
+            </label>
+            <div className="relative flex items-center">
+              <span className="absolute left-3 text-slate-400 pointer-events-none text-sm">🔒</span>
               <input
                 id="signup-confirm-password"
                 name="confirmPassword"
                 type={showPassword ? 'text' : 'password'}
-                className="auth-input"
+                className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 outline-none text-sm text-slate-900 transition-all placeholder:text-slate-400 bg-slate-50/50 focus:bg-white"
                 placeholder="Repeat password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
@@ -295,12 +276,13 @@ const Signup = () => {
         </div>
 
         {/* Show passwords toggle */}
-        <div className="auth-checkbox-row" style={{ justifyContent: 'flex-start' }}>
-          <label className="auth-checkbox">
+        <div className="flex items-center text-xs font-medium text-slate-600 pt-1">
+          <label className="flex items-center gap-2 cursor-pointer">
             <input
               type="checkbox"
               checked={showPassword}
               onChange={(e) => setShowPassword(e.target.checked)}
+              className="rounded text-indigo-600 focus:ring-indigo-500"
             />
             <span>Show passwords</span>
           </label>
@@ -309,24 +291,26 @@ const Signup = () => {
         {/* Submit */}
         <button
           type="submit"
-          className="auth-submit-btn"
           disabled={loading}
+          className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-sm shadow-md shadow-indigo-500/25 transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2 cursor-pointer border-0 mt-2"
         >
           {loading ? (
-            <>
-              <div className="spinner" />
+            <span className="flex items-center gap-2">
+              <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               Creating account...
-            </>
+            </span>
           ) : (
-            <>Create Account →</>
+            <span>Create Account →</span>
           )}
         </button>
       </form>
 
       {/* Footer link */}
-      <div className="auth-footer-link">
+      <div className="text-center text-xs text-slate-500 mt-6">
         Already have an account?{' '}
-        <Link to="/login">Sign in here</Link>
+        <Link to="/login" className="text-indigo-600 hover:text-indigo-700 font-semibold no-underline">
+          Sign in here
+        </Link>
       </div>
     </AuthLayout>
   );

@@ -79,26 +79,30 @@ const Login = () => {
     >
       {/* Error alert */}
       {errorMessage && (
-        <div className="auth-alert auth-alert--error">
-          <div className="auth-alert-icon">!</div>
+        <div className="flex items-center gap-2 p-3 mb-5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs sm:text-sm font-medium">
+          <div className="w-5 h-5 rounded-full bg-rose-600 text-white flex items-center justify-center font-bold text-xs shrink-0">
+            !
+          </div>
           <div>{errorMessage}</div>
         </div>
       )}
 
       {/* Login form */}
-      <form onSubmit={handleSubmit} noValidate>
+      <form onSubmit={handleSubmit} noValidate className="space-y-4">
         {/* Username */}
-        <div className="auth-field">
-          <div className="auth-field-label">
-            <label htmlFor="login-username">Username or Email</label>
+        <div>
+          <div className="flex justify-between items-center mb-1.5">
+            <label htmlFor="login-username" className="text-xs font-semibold text-slate-700">
+              Username or Email
+            </label>
           </div>
-          <div className="auth-input-wrapper">
-            <span className="auth-input-icon">👤</span>
+          <div className="relative flex items-center">
+            <span className="absolute left-3 text-slate-400 pointer-events-none text-sm"></span>
             <input
               id="login-username"
               name="username"
               type="text"
-              className="auth-input"
+              className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 outline-none text-sm text-slate-900 transition-all placeholder:text-slate-400 bg-slate-50/50 focus:bg-white"
               placeholder="Enter your username or email"
               value={formData.username}
               onChange={handleChange}
@@ -110,28 +114,31 @@ const Login = () => {
         </div>
 
         {/* Password */}
-        <div className="auth-field">
-          <div className="auth-field-label">
-            <label htmlFor="login-password">Password</label>
-            <a href="#" tabIndex={-1}>Forgot password?</a>
+        <div>
+          <div className="flex justify-between items-center mb-1.5">
+            <label htmlFor="login-password" className="text-xs font-semibold text-slate-700">
+              Password
+            </label>
+            <a href="#" tabIndex={-1} className="text-xs text-indigo-600 hover:text-indigo-700 font-medium no-underline">
+              Forgot password?
+            </a>
           </div>
-          <div className="auth-input-wrapper">
-            <span className="auth-input-icon">🔒</span>
+          <div className="relative flex items-center">
+            <span className="absolute left-3 text-slate-400 pointer-events-none text-sm"></span>
             <input
               id="login-password"
               name="password"
               type={showPassword ? 'text' : 'password'}
-              className="auth-input"
+              className="w-full pl-9 pr-10 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 outline-none text-sm text-slate-900 transition-all placeholder:text-slate-400 bg-slate-50/50 focus:bg-white"
               placeholder="Enter your password"
               value={formData.password}
               onChange={handleChange}
               required
               autoComplete="current-password"
-              style={{ paddingRight: '3rem' }}
             />
             <button
               type="button"
-              className="auth-pw-toggle"
+              className="absolute right-3 text-slate-400 hover:text-slate-600 cursor-pointer bg-transparent border-0 text-sm"
               onClick={() => setShowPassword(!showPassword)}
               tabIndex={-1}
               title={showPassword ? 'Hide password' : 'Show password'}
@@ -142,16 +149,17 @@ const Login = () => {
         </div>
 
         {/* Remember me / Show password */}
-        <div className="auth-checkbox-row">
-          <label className="auth-checkbox">
-            <input type="checkbox" />
+        <div className="flex items-center justify-between text-xs font-medium text-slate-600 pt-1">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" className="rounded text-indigo-600 focus:ring-indigo-500" />
             <span>Remember me</span>
           </label>
-          <label className="auth-checkbox">
+          <label className="flex items-center gap-2 cursor-pointer">
             <input
               type="checkbox"
               checked={showPassword}
               onChange={(e) => setShowPassword(e.target.checked)}
+              className="rounded text-indigo-600 focus:ring-indigo-500"
             />
             <span>Show password</span>
           </label>
@@ -160,16 +168,16 @@ const Login = () => {
         {/* Submit */}
         <button
           type="submit"
-          className="auth-submit-btn"
           disabled={loading}
+          className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-sm shadow-md shadow-indigo-500/25 transition-all hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2 cursor-pointer border-0 mt-2"
         >
           {loading ? (
-            <>
-              <div className="spinner" />
+            <span className="flex items-center gap-2">
+              <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               Signing in...
-            </>
+            </span>
           ) : (
-            <>Sign In →</>
+            <span>Sign In →</span>
           )}
         </button>
       </form>
@@ -178,9 +186,11 @@ const Login = () => {
       <DemoAccountCards onQuickLogin={handleQuickLogin} isMobile={true} />
 
       {/* Footer link */}
-      <div className="auth-footer-link">
+      <div className="text-center text-xs text-slate-500 mt-6">
         Don't have an account?{' '}
-        <Link to="/signup">Create an account</Link>
+        <Link to="/signup" className="text-indigo-600 hover:text-indigo-700 font-semibold no-underline">
+          Create an account
+        </Link>
       </div>
     </AuthLayout>
   );

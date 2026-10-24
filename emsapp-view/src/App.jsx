@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import LandingPage from './components/LandingPage';
 import LeaveManagement from './components/LeaveManagement';
+import AttendanceManagement from './components/AttendanceManagement';
 import MyProfile from './components/MyProfile';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider, useAuth } from './context/AuthContext';
@@ -87,6 +88,14 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <LeaveManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/attendance"
+              element={
+                <ProtectedRoute>
+                  <AttendanceManagement />
                 </ProtectedRoute>
               }
             />

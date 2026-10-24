@@ -194,7 +194,7 @@ const MyProfile = () => {
                     className="btn btn-light btn-sm px-3 shadow-sm"
                     onClick={() => navigate('/leaves')}
                   >
-                    🏖️ Request Leave
+                     Request Leave
                   </button>
                 </div>
               </div>
@@ -227,7 +227,7 @@ const MyProfile = () => {
 
             <div className="card-body p-4">
               <form onSubmit={handleSubmit}>
-                <h6 className="fw-bold text-primary mb-3">✏️ Permitted Personal Information</h6>
+                <h6 className="fw-bold text-primary mb-3"> Permitted Personal Information</h6>
 
                 {/* Photo Update */}
                 <div className="p-3 mb-4 rounded-3 border bg-light bg-opacity-50">
@@ -346,7 +346,7 @@ const MyProfile = () => {
                 {balances.length > 0 && (
                   <div className="p-3 mb-4 rounded-3 border bg-light bg-opacity-50">
                     <div className="d-flex justify-content-between align-items-center mb-2">
-                      <h6 className="fw-bold mb-0 text-dark">🏖️ Time Off & Leave Balances</h6>
+                      <h6 className="fw-bold mb-0 text-dark"> Time Off & Leave Balances</h6>
                       <button
                         type="button"
                         className="btn btn-link btn-sm text-decoration-none p-0 fw-semibold"

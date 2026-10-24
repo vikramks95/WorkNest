@@ -15,21 +15,21 @@ const getStatusBadge = (status, isLate) => {
   if (norm === 'LATE' || isLate) {
     return (
       <span className="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1 fw-medium">
-        ⚠️ Late Arrival
+        Late Arrival
       </span>
     );
   }
   if (norm === 'HALF_DAY') {
     return (
       <span className="badge bg-info-subtle text-info-emphasis border border-info-subtle px-2 py-1 fw-medium">
-        ⏳ Half Day
+        Half Day
       </span>
     );
   }
   if (norm === 'ON_LEAVE') {
     return (
       <span className="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1 fw-medium">
-        🏖️ On Leave
+        On Leave
       </span>
     );
   }
@@ -42,7 +42,7 @@ const getStatusBadge = (status, isLate) => {
   }
   return (
     <span className="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2 py-1 fw-medium">
-      ⚪ Not Checked In
+      Not Checked In
     </span>
   );
 };
@@ -476,7 +476,7 @@ const AttendanceManagement = () => {
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
         <div>
           <div className="d-flex align-items-center gap-2">
-            <h2 className="fw-bold mb-0">⏱️ Attendance Management</h2>
+            <h2 className="fw-bold mb-0">Attendance Management</h2>
             <span className="badge bg-primary-subtle text-primary border border-primary-subtle">
               Daily & Reports
             </span>
@@ -489,7 +489,7 @@ const AttendanceManagement = () => {
         <div className="d-flex align-items-center gap-2 flex-wrap">
           {/* Live Clock Card */}
           <div className="bg-dark text-white px-3 py-2 rounded-3 shadow-sm d-flex align-items-center gap-2">
-            <span className="fs-5">🕒</span>
+            <span className="fs-5"></span>
             <div>
               <div className="fw-bold font-monospace" style={{ fontSize: '1rem', letterSpacing: '0.05em' }}>
                 {currentTime.toLocaleTimeString('en-US', { hour12: true })}
@@ -508,7 +508,7 @@ const AttendanceManagement = () => {
                 disabled={seeding}
                 title="Populate realistic demo attendance records"
               >
-                <span>{seeding ? '⏳ Seeding...' : '🎲 Seed Demo Data'}</span>
+                <span>{seeding ? ' Seeding...' : ' Seed Demo Data'}</span>
               </button>
               <button
                 className="btn btn-primary btn-sm d-flex align-items-center gap-1"
@@ -536,7 +536,7 @@ const AttendanceManagement = () => {
             className={`nav-link fw-semibold px-3 py-2 ${activeTab === 'daily' ? 'active' : ''}`}
             onClick={() => handleTabChange('daily')}
           >
-            📅 Daily Attendance Status
+             Daily Attendance Status
           </button>
         </li>
         <li className="nav-item">
@@ -544,7 +544,7 @@ const AttendanceManagement = () => {
             className={`nav-link fw-semibold px-3 py-2 ${activeTab === 'monthly' ? 'active' : ''}`}
             onClick={() => handleTabChange('monthly')}
           >
-            📊 Monthly Reports & Analytics
+            Monthly Reports & Analytics
           </button>
         </li>
       </ul>
@@ -575,14 +575,14 @@ const AttendanceManagement = () => {
                       className="rounded-circle bg-warning bg-opacity-10 text-warning d-inline-flex align-items-center justify-content-center"
                       style={{ width: '80px', height: '80px', fontSize: '2.5rem' }}
                     >
-                      ⚪
+                      
                     </div>
                   ) : !isCheckedOut ? (
                     <div
                       className="rounded-circle bg-success bg-opacity-10 text-success d-inline-flex align-items-center justify-content-center"
                       style={{ width: '80px', height: '80px', fontSize: '2.5rem' }}
                     >
-                      🟢
+                      
                     </div>
                   ) : (
                     <div
@@ -623,7 +623,7 @@ const AttendanceManagement = () => {
                 {/* Late Badge indicator */}
                 {todayRecord?.isLate && (
                   <div className="alert alert-warning py-2 px-3 mb-3 text-start small d-flex align-items-center gap-2">
-                    <span>⚠️</span>
+                    <span></span>
                     <div>
                       <strong>Late Arrival Logged:</strong> Checked in {todayRecord.lateMinutes} minutes past shift start.
                     </div>
@@ -671,7 +671,7 @@ const AttendanceManagement = () => {
                     onClick={handleCheckIn}
                     disabled={punchLoading}
                   >
-                    <span>{punchLoading ? '⏳ Checking In...' : '▶️ Check In Now'}</span>
+                    <span>{punchLoading ? ' Checking In...' : ' Check In Now'}</span>
                   </button>
                 ) : !isCheckedOut ? (
                   <button
@@ -679,7 +679,7 @@ const AttendanceManagement = () => {
                     onClick={handleCheckOut}
                     disabled={punchLoading}
                   >
-                    <span>{punchLoading ? '⏳ Checking Out...' : '⏹️ Check Out Now'}</span>
+                    <span>{punchLoading ? ' Checking Out...' : ' Check Out Now'}</span>
                   </button>
                 ) : (
                   <div className="p-3 bg-success-subtle text-success border border-success-subtle rounded-3 text-center">
@@ -964,7 +964,7 @@ const AttendanceManagement = () => {
                           <td>
                             {rec.isLate ? (
                               <span className="text-warning-emphasis small fw-medium">
-                                ⚠️ +{rec.lateMinutes}m Late
+                                +{rec.lateMinutes}m Late
                               </span>
                             ) : rec.checkInTime ? (
                               <span className="text-success small fw-medium">✓ On Time</span>
@@ -979,7 +979,7 @@ const AttendanceManagement = () => {
                                 onClick={() => handleOpenAdjustModal(rec)}
                                 title="Adjust this record"
                               >
-                                ✏️ Adjust
+                                 Adjust
                               </button>
                             </td>
                           )}
@@ -1054,7 +1054,7 @@ const AttendanceManagement = () => {
                     className="btn btn-outline-primary btn-sm"
                     onClick={() => fetchMonthlyReport(selectedYear, selectedMonth)}
                   >
-                    🔄 Refresh
+                     Refresh
                   </button>
                 </div>
 
@@ -1072,7 +1072,7 @@ const AttendanceManagement = () => {
                     onClick={handleExportCSV}
                     title="Download Excel / CSV Attendance Report"
                   >
-                    <span>📥 Export CSV</span>
+                    <span> Export CSV</span>
                   </button>
                 </div>
               </div>
@@ -1206,7 +1206,7 @@ const AttendanceManagement = () => {
                               onClick={() => setDrilldownEmployee(emp)}
                               title="View calendar breakdown for this employee"
                             >
-                              📋 View Log
+                               View Log
                             </button>
                           </td>
                         </tr>

@@ -3,12 +3,12 @@ import LeaveService from '../service/LeaveService';
 import { useAuth } from '../context/AuthContext';
 
 const LEAVE_TYPES = [
-  { value: 'VACATION', label: 'Vacation', icon: '🏖️', defaultDays: 15 },
-  { value: 'SICK_LEAVE', label: 'Sick Leave', icon: '🤒', defaultDays: 10 },
-  { value: 'CASUAL_LEAVE', label: 'Casual Leave', icon: '☕', defaultDays: 7 },
-  { value: 'PERSONAL', label: 'Personal Leave', icon: '🏠', defaultDays: 5 },
-  { value: 'MATERNITY_PATERNITY', label: 'Maternity / Paternity', icon: '👶', defaultDays: 90 },
-  { value: 'UNPAID', label: 'Unpaid Leave', icon: '📋', defaultDays: 30 },
+  { value: 'VACATION', label: 'Vacation', defaultDays: 15 },
+  { value: 'SICK_LEAVE', label: 'Sick Leave',  defaultDays: 10 },
+  { value: 'CASUAL_LEAVE', label: 'Casual Leave', defaultDays: 7 },
+  { value: 'PERSONAL', label: 'Personal Leave',  defaultDays: 5 },
+  { value: 'MATERNITY_PATERNITY', label: 'Maternity / Paternity',  defaultDays: 90 },
+  { value: 'UNPAID', label: 'Unpaid Leave', defaultDays: 30 },
 ];
 
 const getStatusBadge = (status) => {
@@ -23,13 +23,13 @@ const getStatusBadge = (status) => {
   if (norm === 'REJECTED') {
     return (
       <span className="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1 fw-medium">
-        ✕ Rejected
+         Rejected
       </span>
     );
   }
   return (
     <span className="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1 fw-medium">
-      ⏳ Pending Review
+       Pending Review
     </span>
   );
 };
@@ -347,7 +347,7 @@ const LeaveManagement = () => {
       {canManageLeaves && pendingCount > 0 && activeTab !== 'PENDING' && (
         <div className="alert alert-warning border-warning border-opacity-50 shadow-sm d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 py-2 px-3">
           <div className="d-flex align-items-center gap-2">
-            <span className="fs-5">⏳</span>
+            <span className="fs-5"></span>
             <div>
               <strong>Action Required:</strong> You have <strong>{pendingCount}</strong> pending leave{' '}
               {pendingCount === 1 ? 'request' : 'requests'} waiting for your review.
@@ -460,21 +460,21 @@ const LeaveManagement = () => {
                   className={`btn ${activeTab === 'PENDING' ? 'btn-warning text-dark fw-semibold' : 'btn-outline-secondary'}`}
                   onClick={() => setActiveTab('PENDING')}
                 >
-                  ⏳ Pending ({pendingCount})
+                  Pending ({pendingCount})
                 </button>
                 <button
                   type="button"
                   className={`btn ${activeTab === 'APPROVED' ? 'btn-success text-white' : 'btn-outline-secondary'}`}
                   onClick={() => setActiveTab('APPROVED')}
                 >
-                  ✓ Approved ({leaves.filter((l) => l.status === 'APPROVED').length})
+                  Approved ({leaves.filter((l) => l.status === 'APPROVED').length})
                 </button>
                 <button
                   type="button"
                   className={`btn ${activeTab === 'REJECTED' ? 'btn-danger text-white' : 'btn-outline-secondary'}`}
                   onClick={() => setActiveTab('REJECTED')}
                 >
-                  ✕ Rejected ({leaves.filter((l) => l.status === 'REJECTED').length})
+                  Rejected ({leaves.filter((l) => l.status === 'REJECTED').length})
                 </button>
               </div>
             </div>
@@ -531,7 +531,7 @@ const LeaveManagement = () => {
             </div>
           ) : filteredLeaves.length === 0 ? (
             <div className="text-center py-5 text-muted">
-              <div className="fs-1 mb-2">🏖️</div>
+              <div className="fs-1 mb-2"></div>
               <h6 className="fw-bold mb-1">No Leave Requests Found</h6>
               <p className="small text-muted mb-3">
                 {activeTab !== 'ALL' || selectedTypeFilter !== 'ALL' || searchQuery
@@ -663,7 +663,7 @@ const LeaveManagement = () => {
                                   onClick={() => openInspectBalances(leave.employeeId, leave.employeeName)}
                                   title="Inspect employee leave balances"
                                 >
-                                  📊
+                                  
                                 </button>
                               )}
                             </div>
@@ -676,7 +676,7 @@ const LeaveManagement = () => {
                                   onClick={() => handleCancelLeave(leave.id)}
                                   title="Withdraw this pending request"
                                 >
-                                  🗑️ Cancel
+                                   Cancel
                                 </button>
                               )}
                               {leave.reviewComment ? (
@@ -723,7 +723,7 @@ const LeaveManagement = () => {
                   aria-label="Close"
                 ></button>
                 <div className="d-flex align-items-center gap-2">
-                  <span className="fs-3">🏖️</span>
+                  <span className="fs-3"></span>
                   <div>
                     <h5 className="modal-title fw-bold mb-0">Apply for Leave</h5>
                     <small className="text-white-50">Submit a time-off or absence request</small>
@@ -809,7 +809,7 @@ const LeaveManagement = () => {
                         </span>
                         {isBalanceExceeded && (
                           <span className="text-danger fw-semibold">
-                            ⚠️ Exceeds remaining balance by {requestedDays - (selectedTypeBalance?.availableDays || 0)}{' '}
+                            Exceeds remaining balance by {requestedDays - (selectedTypeBalance?.availableDays || 0)}{' '}
                             days
                           </span>
                         )}
@@ -919,7 +919,7 @@ const LeaveManagement = () => {
 
                   {reviewAction === 'APPROVED' && (
                     <div className="alert alert-info py-2 small mb-3">
-                      ℹ️ Approving this request will automatically update the employee's status to{' '}
+                      Approving this request will automatically update the employee's status to{' '}
                       <strong>ON_LEAVE</strong> on the executive dashboard and employee directory.
                     </div>
                   )}
@@ -982,7 +982,7 @@ const LeaveManagement = () => {
                   onClick={() => setInspectingEmployee(null)}
                   aria-label="Close"
                 ></button>
-                <h5 className="modal-title fw-bold mb-1">📊 Employee Leave Balances</h5>
+                <h5 className="modal-title fw-bold mb-1">Employee Leave Balances</h5>
                 <small className="text-white-50">
                   {inspectingEmployee.name} (EMP #{inspectingEmployee.id})
                 </small>

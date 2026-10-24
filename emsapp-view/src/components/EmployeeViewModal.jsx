@@ -136,7 +136,7 @@ const EmployeeViewModal = ({ employee, onClose, onEdit, canEdit = true }) => {
                   onEdit(employee.id);
                 }}
               >
-                ✏️ Edit Details
+                 Edit Details
               </button>
             )}
             <button type="button" className="btn btn-secondary btn-sm px-3" onClick={onClose}>

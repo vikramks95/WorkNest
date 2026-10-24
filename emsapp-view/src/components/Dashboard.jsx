@@ -218,7 +218,7 @@ const Dashboard = () => {
               disabled={seeding}
               title="Populate 8 realistic demo employees with departments"
             >
-              {seeding ? 'Seeding...' : '⚡ Load Demo Employees'}
+              {seeding ? 'Seeding...' : ' Load Demo Employees'}
             </button>
           )}
           <button className="btn btn-outline-secondary btn-sm px-3" onClick={fetchStats}>
@@ -250,7 +250,7 @@ const Dashboard = () => {
                 className="d-flex align-items-center justify-content-center rounded-3 bg-primary bg-opacity-10 text-primary"
                 style={{ width: '42px', height: '42px' }}
               >
-                👥
+                
               </div>
             </div>
             <h3 className="fw-bold mb-1">{stats?.totalEmployees || 0}</h3>
@@ -271,7 +271,7 @@ const Dashboard = () => {
                 className="d-flex align-items-center justify-content-center rounded-3 bg-success bg-opacity-10 text-success"
                 style={{ width: '42px', height: '42px' }}
               >
-                ✅
+                
               </div>
             </div>
             <h3 className="fw-bold mb-1 text-success">{stats?.activeEmployees || 0}</h3>
@@ -290,7 +290,7 @@ const Dashboard = () => {
                 className="d-flex align-items-center justify-content-center rounded-3 bg-purple bg-opacity-10 text-white"
                 style={{ width: '42px', height: '42px', backgroundColor: '#8b5cf6' }}
               >
-                🏢
+                
               </div>
             </div>
             <h3 className="fw-bold mb-1">{stats?.totalDepartments || 0}</h3>
@@ -307,7 +307,7 @@ const Dashboard = () => {
                 className="d-flex align-items-center justify-content-center rounded-3 bg-warning bg-opacity-10 text-warning"
                 style={{ width: '42px', height: '42px' }}
               >
-                🏖️
+                
               </div>
             </div>
             <h3 className="fw-bold mb-1 text-warning-emphasis">{stats?.onLeaveEmployees || 0}</h3>
@@ -465,7 +465,7 @@ const Dashboard = () => {
             <div className="card-body p-0">
               {(!stats?.leaveEmployees || stats.leaveEmployees.length === 0) ? (
                 <div className="text-center py-5 text-muted">
-                  <div className="fs-1 mb-2">🏖️</div>
+                  <div className="fs-1 mb-2"></div>
                   <h6 className="fw-bold mb-1">Full Attendance</h6>
                   <p className="small text-muted mb-0">No employees are currently marked on leave.</p>
                 </div>
@@ -496,7 +496,7 @@ const Dashboard = () => {
                           </div>
                           {emp.phone && (
                             <div className="text-muted" style={{ fontSize: '0.75rem' }}>
-                              📞 {emp.phone}
+                               {emp.phone}
                             </div>
                           )}
                         </div>
